@@ -1,49 +1,69 @@
-# Koii Hello World Task
+# Twitter Searcher
 
-This is a simple task which uses Webpack to allow support of all node modules and project structures instead of a single file executable for the Koii task. The main purpose is to simply print `hello world`!
+**Not for illegal use**
 
-## How to Setup
+This tool is designed exclusively for theoretical use in public archival projects and is not intended to be used for for-profit activities.
 
-1. Clone this repo
-2. Run `yarn install`
-3. Run `yarn run test` for Jest testing or `yarn prod-debug.js` for the live debugger
+Examples of fair use:
+ - tracking your own social media presence
+ - archiving or backing up sensitive content to protect against persecution
 
-## Structure Breakdown
+Examples of bad use:
+ - stealing data (i.e. selling large scale analytics)
+ - infringing on personal privacy (i.e. "stalking")
 
-The task template contains three separate JavaScript files in the task folder that contain all of the functions for a Koii task to function properly.
+Please consult with a legal professional before engaging in any form of web-searching or data-gathering activities.
 
-```bash
-📦hello-world
- ┣ 📂_koiiNode
- ┃ ┗ 📜koiiNode.js // Contains all the components that task connect to K2.
- ┣ 📂task
- ┃ ┣ 📜index.js // Main file that contains the task function.
- ┃ ┣ 📜submission.js // Contains the task function and submitTask function.
- ┃ ┣ 📜audit.js // Contains the auditTask function.
- ┃ ┗ 📜distribution.js // Contains the submitDistributionList and auditDistribution function.
- ┣ 📂tests
- ┣ 📜config-task.yml
- ┣ 📜debugger.js
- ┣ 📜prod-debug.js // used for live debugging
- ┣ 📜coreLogic.js
- ┗ 📜index.js
+## Koii Tasks
+
+Koii tasks are community based activities where participants run common code on their local machines. This repo provides an example of how to use headless browsers and DOM manipulation to automate user actions, using tasks, to provide new possibilities for community coordination.
+
+In the Koii architecture, community nodes run tasks and generate 'submissions' which they submit to claim rewards. When a submission is posted to the network, other nodes verify, or 'audit' that submission, and then choose whether to approve rewards. See `twitter-task.js` for the task implementation. 
+
+## What's in the Project?
+This is an implementation of the default data-gatherer class of Koii tasks.
+
+There are four main components, detailed in the adapter file: `adapters/twitter/twitter.js`
+1. Negotiate Session
+2. Fetch a list
+3. search for an item
+4. Store the item
+
+The repo also contains a host of test files, most importantly `test/test-one-round.js` which details the full flow of one [gradual consensus](https://docs.koii.network/concepts/gradual-consensus/runtime-flow) round. 
+
+Run the test with 
+```
+yarn install or npm install
+yarn test or npm run test
 ```
 
-## What's in the Template
+## Using The Searcher
+To modify the searcher query, or change how it uses the local database, open `twitter-task.js`.
 
-### Core files
+The `query` object manages the key parts of the searcher.
 
-- index.js — is the hub of your app, and ties the other pieces together. This will be the entry point when your task runs on task nodes.
+```javascript
+let searchTerm = "#koii";
+let query = {
+    limit: 100, // total number of records to return
+    searchTerm: searchTerm, // the keyword to look for
+    query: `https://twitter.com/search?q=${ searchTerm }&src=typed_query`, // the query string (including said keyword)
+    depth: 3, // the depth of recursive layers to follow 
+    recursive: true, // descend recursively?
+    updateRound: () => {} // a function that returns the current round
+    round: 1 // the current round
+}
+```
 
-- \_koiiNode — is a directory that contains koiiNode.js which has the interfaces to make API calls to the core of the task node. It contains all the necessary functions required to submit and audit the work, as well as the distribution lists. Check [here](https://docs.koii.network/develop/write-a-koii-task/task-development-kit-tdk/using-the-task-namespace/the-namespace-object) to learn more about namespace functions.
+## Modifying the Task
+Check `task-config.yaml` for the deployment config. 
 
-### Task Directory
+## Deploying to Koii
+Use the `create-task-cli` to build and deploy your task. 
 
-It houses three key files: submission.js, audit.js and distribution.js. These files are where you define your task, audit, and distribution logic, enabling you to control the core functionality of the task.
+```
+yarn webpack #builds your task executable
+npx @_koii/create-task-cli@latest #uploads your task executable to IPFS and starts it on Koii
+```
 
-This structure allows a modular approach to task development. By only utilizing these three files, you can easily modify and test your task logic without having to worry about the other aspects. To understand the theory behind this, please refer to the
-[Runtime Flow](https://docs.koii.network/concepts/gradual-consensus/runtime-flow).
-
-Finally, in the index.js file, all these functions are combined as a task, which is then imported and used in corelogic.js. It is advisable to organize separate features into sub-files and import them into the relevant files before web-packing for better code management and maintainability. This modular approach allows for a more organized and efficient development process.
-
-For more information about how to customize your own task, please check our docs [here](https://docs.koii.network/develop/write-a-koii-task/task-development-guide/introduction).
+For a longer demo and more information please see https://blog.koii.network/How-to-deploy-a-koii-task-in-less-than-5mins/

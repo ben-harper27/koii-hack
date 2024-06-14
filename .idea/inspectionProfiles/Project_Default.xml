@@ -1,0 +1,61 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JSAnnotator" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="38">
+            <item index="0" class="java.lang.String" itemvalue="google" />
+            <item index="1" class="java.lang.String" itemvalue="ddtrace" />
+            <item index="2" class="java.lang.String" itemvalue="transpose" />
+            <item index="3" class="java.lang.String" itemvalue="telegram" />
+            <item index="4" class="java.lang.String" itemvalue="mysqlclient" />
+            <item index="5" class="java.lang.String" itemvalue="aiohttp" />
+            <item index="6" class="java.lang.String" itemvalue="httpx" />
+            <item index="7" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="8" class="java.lang.String" itemvalue="opentelemetry-sdk" />
+            <item index="9" class="java.lang.String" itemvalue="google-cloud-storage" />
+            <item index="10" class="java.lang.String" itemvalue="google-cloud-tasks" />
+            <item index="11" class="java.lang.String" itemvalue="requests" />
+            <item index="12" class="java.lang.String" itemvalue="plaid-python" />
+            <item index="13" class="java.lang.String" itemvalue="eth-account" />
+            <item index="14" class="java.lang.String" itemvalue="hypercorn" />
+            <item index="15" class="java.lang.String" itemvalue="tenacity" />
+            <item index="16" class="java.lang.String" itemvalue="pycountry" />
+            <item index="17" class="java.lang.String" itemvalue="sqlmodel" />
+            <item index="18" class="java.lang.String" itemvalue="magic-admin" />
+            <item index="19" class="java.lang.String" itemvalue="pyairtable" />
+            <item index="20" class="java.lang.String" itemvalue="opentelemetry-exporter-gcp-trace" />
+            <item index="21" class="java.lang.String" itemvalue="pydantic" />
+            <item index="22" class="java.lang.String" itemvalue="aiofiles" />
+            <item index="23" class="java.lang.String" itemvalue="web3" />
+            <item index="24" class="java.lang.String" itemvalue="python-multipart" />
+            <item index="25" class="java.lang.String" itemvalue="httpx-auth" />
+            <item index="26" class="java.lang.String" itemvalue="sendgrid" />
+            <item index="27" class="java.lang.String" itemvalue="opentelemetry-instrumentation-fastapi" />
+            <item index="28" class="java.lang.String" itemvalue="fastapi" />
+            <item index="29" class="java.lang.String" itemvalue="opentelemetry-instrumentation-httpx" />
+            <item index="30" class="java.lang.String" itemvalue="google-cloud-firestore" />
+            <item index="31" class="java.lang.String" itemvalue="pinecone" />
+            <item index="32" class="java.lang.String" itemvalue="yara-python" />
+            <item index="33" class="java.lang.String" itemvalue="vertexai" />
+            <item index="34" class="java.lang.String" itemvalue="sqlalchemy" />
+            <item index="35" class="java.lang.String" itemvalue="llama-index" />
+            <item index="36" class="java.lang.String" itemvalue="cryptography" />
+            <item index="37" class="java.lang.String" itemvalue="pyjwt" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="api.dependency.user.MySQLdb" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="TsLint" enabled="true" level="WARNING" enabled_by_default="true" />
+  </profile>
+</component>
